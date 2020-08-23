@@ -1,0 +1,35 @@
+$gray: #5A5A5A;
+
+body {
+  font-family: 'Montserrat', Arial, sans-serif;
+  color: $gray;
+  margin: 0 auto;
+  background: #fff;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.btn {
+  overflow: visible;
+  background: none;
+  border: solid 2px $gray;
+  color: $gray;
+  cursor: pointer;
+  display: inline-block;
+  font-family: 'Helvetica', Arial, sans-serif;
+  font-size: 0.875em;
+  font-weight: bold;
+  outline: none;
+  padding: 10px 25px;
+  margin: 20px 10px;
+  text-transform: uppercase;
+  max-width: 200px;
+
+  &:hover {
+    background: $gray;
+    color: #F2F3EB;
+  }
+}
