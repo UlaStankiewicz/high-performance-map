@@ -1,5 +1,5 @@
 import { MapDataProps, SortValues } from "../components";
-
+const checkArrayIfItemExist=(arr: MapDataProps[], item: MapDataProps)=> arr.map(el=> el._id).includes(item._id);
 export const filteredValues = (
   mapData: MapDataProps[],
   sortingValues: SortValues
@@ -9,13 +9,15 @@ export const filteredValues = (
     const direction = data.direction;
     const filteredItems: MapDataProps[] = [];
     flags.forEach((colorFlag) => {
-      if (sortingValues.flag.includes(colorFlag)) {
+      if (sortingValues.flag.includes(colorFlag) &&
+      !checkArrayIfItemExist(filteredItems, data)) {
         filteredItems.push(data);
       }
     });
+
     if (
       sortingValues.direction.includes(direction) &&
-      !filteredItems.includes(data)
+      !checkArrayIfItemExist(filteredItems, data)
     ) {
       filteredItems.push(data);
     }
