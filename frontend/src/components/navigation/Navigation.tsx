@@ -1,6 +1,6 @@
 import './Navigation.scss';
 import React, { FunctionComponent, ReactElement } from 'react';
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 export const Navigation: FunctionComponent = (): ReactElement => (
     <div className="nav">
