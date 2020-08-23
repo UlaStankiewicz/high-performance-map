@@ -67,7 +67,7 @@ export const Home: FunctionComponent = (): ReactElement => {
     ) : (
       <ErrorAlert errorMessage="No data to display" fullPage />
     );
-  console.log(sortValues);
+  console.log(sortedMapData, mapData);
   return (
     <>
       <button className="btn" onClick={(): void => setMapVisible(!mapVisible)}>

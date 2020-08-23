@@ -13,7 +13,7 @@ export interface MapDataProps {
   cords: LatLng;
   direction: string;
   flag: string[];
-  id: string;
+  _id: string;
 }
 
 export const PointById: FunctionComponent = (): ReactElement | null => {

@@ -10,11 +10,11 @@ export const List: FunctionComponent<{ mapData: MapDataProps[] }> = ({
 }): ReactElement => (
   <ul className="list">
     {mapData.map((point: MapDataProps) => {
-      const { direction, flag, address, id } = point;
-      const flagIcons = flag.map((color) => {
+      const { direction, flag, address, _id } = point;
+      const flagIcons = flag.map((color: string, i: number) => {
         return (
           <IconContext.Provider
-            value={{ color, className: "global-class-name", size: "1.5em" }}
+            value={{ color, className: "global-class-name", size: "1.5em" }} key={i}
           >
             <MdAssistantPhoto />
           </IconContext.Provider>
@@ -25,7 +25,7 @@ export const List: FunctionComponent<{ mapData: MapDataProps[] }> = ({
           <p>direction: {direction}</p>
           <p>flag: {flagIcons}</p>
           <p>address: {address}</p>
-          <Link to={id} className="list--link">
+          <Link to={_id} className="list--link">
             see more
           </Link>
         </li>

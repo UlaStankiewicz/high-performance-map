@@ -30,7 +30,7 @@ export const Maps: FunctionComponent<{ locations: MapDataProps[] }> = ({
           {locations.map((item: MapDataProps) => {
             return (
               <Marker
-                key={item.id}
+                key={item._id}
                 position={item.cords}
                 onClick={() => setSelected(item)}
               />
