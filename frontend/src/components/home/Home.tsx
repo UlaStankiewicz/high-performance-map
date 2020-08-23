@@ -44,7 +44,7 @@ export const Home: FunctionComponent = (): ReactElement => {
 
   const sortedMapData = useMemo((): MapDataProps[] | [] => {
     return mapData && sortValues ? filteredValues(mapData, sortValues) : [];
-  }, [mapData, sortValues, filteredValues]);
+  }, [mapData, sortValues]);
 
   if (error) {
     return <ErrorAlert errorMessage={error} fullPage />;
@@ -67,7 +67,6 @@ export const Home: FunctionComponent = (): ReactElement => {
     ) : (
       <ErrorAlert errorMessage="No data to display" fullPage />
     );
-  console.log(sortedMapData, mapData);
   return (
     <>
       <button className="btn" onClick={(): void => setMapVisible(!mapVisible)}>
