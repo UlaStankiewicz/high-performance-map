@@ -5,12 +5,12 @@ import {
   InfoWindow,
 } from "@react-google-maps/api";
 import React, { FunctionComponent, ReactElement, useState } from "react";
-import { LatLng, MapDataProps } from "../pointById/PointById";
+import { MapDataProps } from "../pointById/PointById";
 
 export const Maps: FunctionComponent<{ locations: MapDataProps[] }> = ({
   locations,
 }): ReactElement => {
-  const [selected, setSelected] = useState<any>({});
+  const [selected, setSelected] = useState<MapDataProps | undefined>();
   const mapStyles = {
     height: "500px",
     width: "80%",
@@ -23,30 +23,32 @@ export const Maps: FunctionComponent<{ locations: MapDataProps[] }> = ({
         googleMapsApiKey={process.env.REACT_APP_API_KEY}
       >
         <GoogleMap
-          zoom={13}
-          mapContainerStyle={mapStyles}
-          center={locations[0].cords}
-        >
-          {locations.map((item: MapDataProps) => {
+        mapContainerStyle={mapStyles}
+        zoom={13}
+        center={locations[0].cords}>
+        
+      {
+        locations.map(item => {
             return (
-              <Marker
-                key={item._id}
-                position={item.cords}
-                onClick={() => setSelected(item)}
-              />
-            );
-          })}
-          {selected.location && (
-            <InfoWindow
-              position={selected.location}
-              onCloseClick={() => setSelected({})}
-            >
-              <>
-                <p>Flag: {selected.flag}</p>
-                <p>Direction: {selected.direction}</p>
-              </>
-            </InfoWindow>
-          )}
+            <Marker
+              key={item._id}
+              position={item.cords}
+              onClick={() => setSelected(item)}
+            />
+            )
+          })
+      },
+      {
+        selected && 
+        (
+          <InfoWindow
+            position={selected.cords}
+            onCloseClick={() => setSelected(undefined)}
+        >
+          <p>{selected.address}</p>
+        </InfoWindow>
+        )
+     }
         </GoogleMap>
       </LoadScript>
     </>
